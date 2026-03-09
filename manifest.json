@@ -1,13 +1,13 @@
 {
     "format_version": 2,
     "header": {
-        "name": "True Dynamic Light BP",
+        "name": "Dynamic Light",
         "description": "Real-time lighting effects for held items, entities, and projectiles.",
         "uuid": "91cdcd5c-3586-4aab-84a9-d307754ba1b3",
         "version": [
-            2,
             1,
-            9
+            0,
+            0
         ],
         "min_engine_version": [
             1,
@@ -17,13 +17,13 @@
     },
     "modules": [
         {
-            "description": "True Dynamic Light Data",
+            "description": "Dynamic Light Data",
             "type": "data",
             "uuid": "ec39d90b-5582-4cd9-aaed-e1b3b1810905",
             "version": [
-                2,
                 1,
-                9
+                0,
+                0
             ]
         },
         {
@@ -32,9 +32,9 @@
             "language": "javascript",
             "uuid": "45117680-fbd6-4937-bf54-d9675a39e93d",
             "version": [
-                2,
                 1,
-                9
+                0,
+                0
             ],
             "entry": "index.js"
         }
