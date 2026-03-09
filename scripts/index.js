@@ -936,7 +936,14 @@ world5.beforeEvents.itemUse.subscribe((event) => {
     const currentItem = equippable.getEquipment(EquipmentSlot.Mainhand);
     if (!currentItem || currentItem.typeId !== itemStack.typeId)
       return;
-    equippable.setEquipment(EquipmentSlot.Offhand, currentItem);
-    equippable.setEquipment(EquipmentSlot.Mainhand, void 0);
+    const singleTorch = currentItem.clone();
+    singleTorch.amount = 1;
+    equippable.setEquipment(EquipmentSlot.Offhand, singleTorch);
+    if (currentItem.amount > 1) {
+      currentItem.amount -= 1;
+      equippable.setEquipment(EquipmentSlot.Mainhand, currentItem);
+    } else {
+      equippable.setEquipment(EquipmentSlot.Mainhand, void 0);
+    }
   });
 });
