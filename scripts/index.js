@@ -929,19 +929,28 @@ world5.beforeEvents.itemUse.subscribe((event) => {
   const equippable = player.getComponent(EntityEquippableComponent.componentId);
   if (!equippable)
     return;
+
+  // v1.8 Trick: If looking at a block within range, don't move to off-hand (we want to PLACE the torch)
+  const blockView = player.getBlockFromViewDirection({ maxDistance: 8, includePassableBlocks: true });
+  if (blockView && blockView.block)
+    return;
+
   const offHand = equippable.getEquipment(EquipmentSlot.Offhand);
   if (offHand)
     return;
-  const currentItem = equippable.getEquipment(EquipmentSlot.Mainhand);
-  if (!currentItem || currentItem.typeId !== itemStack.typeId)
-    return;
-  const singleTorch = currentItem.clone();
-  singleTorch.amount = 1;
-  equippable.setEquipment(EquipmentSlot.Offhand, singleTorch);
-  if (currentItem.amount > 1) {
-    currentItem.amount -= 1;
-    equippable.setEquipment(EquipmentSlot.Mainhand, currentItem);
-  } else {
-    equippable.setEquipment(EquipmentSlot.Mainhand, void 0);
-  }
+  
+  // v1.8 Trick: Use runCommandAsync to bypass placement logic and move the item
+  player.runCommandAsync(`replaceitem entity @s slot.weapon.offhand 0 ${itemStack.typeId} 1`);
+  
+  system.run(() => {
+    const currentItem = equippable.getEquipment(EquipmentSlot.Mainhand);
+    if (!currentItem || currentItem.typeId !== itemStack.typeId)
+      return;
+    if (currentItem.amount > 1) {
+      currentItem.amount -= 1;
+      equippable.setEquipment(EquipmentSlot.Mainhand, currentItem);
+    } else {
+      equippable.setEquipment(EquipmentSlot.Mainhand, void 0);
+    }
+  });
 });
