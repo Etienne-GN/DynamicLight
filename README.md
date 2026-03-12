@@ -26,6 +26,30 @@ Real-time lighting effects for held items, entities, and projectiles.
 6. **Performance Toggle**: Add an in-game command to manually switch between performance tiers.
 7. **Block-to-Light Mapping**: Expand the `ItemIlumination` list to include all 1.21+ light-emitting blocks (e.g., Trial Spawners, Vaults).
 
+## 🛠 Build Instructions
+To create the `.mcaddon` file for testing:
+1. From the project root, run: `./package_addon.sh dynamic_lights`
+
+## 📜 Changelog
+
+### [1.8.0] - Active Development
+#### Added
+- Multi-Tier Performance: Automatically adjusts quality based on server memory.
+- Held Item Lighting (Main-hand and Off-hand).
+- Torching to Off-hand: Long-clicking with light item moves it to empty off-hand.
+- Entity Illumination (Blazes, Magma Cubes, Glow Squids).
+- Dropped Item Lighting.
+- HeartBeat System: realistic flickering effect for fire sources.
+- Underwater Support.
+- Dynamic Fire Lighting for burning entities.
+#### Changed
+- Raycasting Accuracy needs refinement (Current known issue).
+
+## ⚖️ Commit & Versioning Rules
+1. **Stable UUIDs:** Once a mod version is stable, **DO NOT** change the `uuid` in `manifest.json`.
+2. **Increment Version:** To update the mod, only increment the `version` array in `manifest.json`. This allows users to import it as an update without deleting the old version.
+3. **Update README:** After every significant change, update the Roadmap in the `README.md` (move items from To-Do to Verified).
+
 ## Custom Addon Integration
 To implement dynamic lighting in third-party addons:
 - Add a `dynamic_light:light_level` tag to the item.
