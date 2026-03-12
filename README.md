@@ -4,18 +4,19 @@ Real-time lighting effects for held items, entities, and projectiles.
 ## 🗺 Roadmap
 
 ### 🟢 Verified
-* **Multi-Tier Performance**: Automatically adjusts quality based on server memory (Low, Mid, High, SuperHigh).
-* **Held Item Lighting**: Players holding torches, lanterns, or lava buckets emit light.
-* **Off-hand Support**: Lighting now works for items in the off-hand.
-* **Torching to Off-hand**: Long-clicking (item use) with a light-emitting item moves it to the empty off-hand.
-* **Entity Illumination**: Blazes, Magma Cubes, and Glow Squids naturally emit light.
-* **Dropped Item Lighting**: Light-emitting items on the ground still function as light sources.
-* **HeartBeat System**: Torches and fire-based sources have a realistic flickering effect.
-* **Underwater Support**: Sea lanterns and other water-loggable items work submerged.
-* **Dynamic Fire Lighting**: Entities on fire emit light while burning.
+* **Multi-Tier Performance**: Automatically adjusts quality based on server memory (Low, Mid, High, SuperHigh) (v1.8.0).
+* **Held Item Lighting (Torch Only)**: Players holding torches emit light (v1.8.0).
+* **Off-hand Support (Torch Only)**: Lighting works for torches in the off-hand (v1.8.0).
+* **Torching to Off-hand (Torch Only)**: Long-clicking (item use) with a torch moves it to the empty off-hand (v1.8.0).
+* **Entity Illumination**: Blazes, Magma Cubes, and Glow Squids naturally emit light (v1.8.0).
+* **Dropped Item Lighting (Torch Only)**: Light-emitting items on the ground still function as light sources (v1.8.0).
+* **HeartBeat System**: Torches and fire-based sources have a realistic flickering effect (v1.8.0).
+* **Underwater Support**: Sea lanterns and other water-loggable items work submerged (v1.8.0).
+* **Dynamic Fire Lighting**: Entities on fire emit light while burning (v1.8.0).
 
 ### 🔵 To Test
 * **Raycasting Accuracy**: Lighting occasionally clips through thin walls or corners (Needs Refinement).
+* **Lantern & Lava Bucket Support**: Verify if other light sources from `ItemIlumination` list are functioning as intended.
 
 ### ⚪ To-Do
 1. **Projectile Lighting**: Glowing projectiles (like Flaming Arrows or Fireballs) should emit light while in flight.
@@ -25,6 +26,8 @@ Real-time lighting effects for held items, entities, and projectiles.
 5. **Dimming Effect**: Gradually decrease light intensity as a source (like a torch) "burns out" if a durability system is implemented.
 6. **Performance Toggle**: Add an in-game command to manually switch between performance tiers.
 7. **Block-to-Light Mapping**: Expand the `ItemIlumination` list to include all 1.21+ light-emitting blocks (e.g., Trial Spawners, Vaults).
+8. **Broaden Held Item Support**: Ensure all items in `ItemIlumination` (Lanterns, Soul Torches, etc.) work for main-hand and off-hand.
+9. **Broaden Torching to Off-hand**: Support all light-emitting items for the "move to off-hand" feature.
 
 ## 🛠 Build Instructions
 To create the `.mcaddon` file for testing:
